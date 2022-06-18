@@ -14,7 +14,8 @@ const createUser = async(req,res) => {
     try {
 
         const newUser = await User.create({name,email,password : newPassword,role})
-        const token = generateToken({name,email,role})
+        id = newUser._id
+        const token = generateToken({name,email,role,id})
         res.status(201).json({status : 'Success' , token})
         
     } catch (error) {
@@ -47,6 +48,7 @@ const loginUser = async (req,res) => {
         return res.status(400).json({status : 'Failed', message : 'Passwords do not match'})
 
         const currUser = {
+            id : user._id,
             name : user.name,
             email : user.email,
             role : user.role
