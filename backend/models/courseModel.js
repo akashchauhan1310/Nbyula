@@ -22,7 +22,7 @@ const courseSchema = mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         required:false,
         default:null,
-        ref:'quizes'
+        ref:'Quizes'
     }
 
 }, {timestamps : true})
